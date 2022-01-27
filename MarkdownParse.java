@@ -56,7 +56,10 @@ public class MarkdownParse {
             if (!(nextOpenBracket > 0 && markdown.charAt(nextOpenBracket - 1) == '!')) {
                 String substr = markdown.substring(openParen + 1, closeParen);
                 substr = substr.replaceAll("\\\\(.)", "$1");
-                toReturn.add(substr);
+                if (!substr.contains(" ")) {
+                    // URLs containing a space should be ignored
+                    toReturn.add(substr);
+                }
             }
             currentIndex = closeParen + 1;
         }

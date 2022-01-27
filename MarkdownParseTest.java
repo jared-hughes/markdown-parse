@@ -68,6 +68,12 @@ public class MarkdownParseTest {
   }
 
   @Test
+  public void testSpaceInURL() {
+    assertResult("test-space-in-url.md",
+        List.of());
+  }
+
+  @Test
   public void testUnclosedBracket() {
     assertResult("test-unclosed-bracket.md",
         List.of("https://example.com", "https://example.com/2"));
