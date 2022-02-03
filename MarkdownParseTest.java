@@ -17,89 +17,94 @@ public class MarkdownParseTest {
   }
 
   @Test
-  public void testBackslashEscapes() {
-    assertResult("test-backslash-escapes.md",
-        List.of("/close_bracket", "/single_)bracket", "/double_\\",
-            "/triple_\\)bracket", "/quad_\\\\", "/open_(paren"));
+  public void testFailing() {
+    assertEquals("Should fail", 5, 2+2);
   }
 
-  @Test
-  public void testEmpty() {
-    assertResult("test-empty.md", List.of());
-  }
+  // @Test
+  // public void testBackslashEscapes() {
+  //   assertResult("test-backslash-escapes.md",
+  //       List.of("/close_bracket", "/single_)bracket", "/double_\\",
+  //           "/triple_\\)bracket", "/quad_\\\\", "/open_(paren"));
+  // }
 
-  @Test
-  public void testEndingText() {
-    assertResult("test-ending-text.md",
-        List.of("https://something.com", "some-page.html"));
-  }
+  // @Test
+  // public void testEmpty() {
+  //   assertResult("test-empty.md", List.of());
+  // }
 
-  @Test
-  public void testSimpleFile() {
-    assertResult("test-file.md",
-        List.of("https://something.com", "some-page.html"));
-  }
+  // @Test
+  // public void testEndingText() {
+  //   assertResult("test-ending-text.md",
+  //       List.of("https://something.com", "some-page.html"));
+  // }
 
-  @Test
-  public void testIgnoreImage() {
-    assertResult("test-ignore-image.md",
-        List.of("/actual_link1", "/actual_link2", "/actual_link3"));
-  }
+  // @Test
+  // public void testSimpleFile() {
+  //   assertResult("test-file.md",
+  //       List.of("https://something.com", "some-page.html"));
+  // }
 
-  @Test
-  public void testLabReport() {
-    assertResult("test-lab-report.md",
-        List.of("index.md", "https://code.visualstudio.com/download",
-            "https://sdacs.ucsd.edu/~icc/index.php",
-            "https://sdacs.ucsd.edu/cgi-bin/alloc-query",
-            "https://docs.microsoft.com/en-us/windows-server/" +
-                "administration/openssh/openssh_install_firstuse"));
-  }
+  // @Test
+  // public void testIgnoreImage() {
+  //   assertResult("test-ignore-image.md",
+  //       List.of("/actual_link1", "/actual_link2", "/actual_link3"));
+  // }
 
-  @Test
-  public void testParenInsideBracket() {
-    assertResult("test-paren-inside-bracket.md",
-        List.of("https://example.com"));
-  }
+  // @Test
+  // public void testLabReport() {
+  //   assertResult("test-lab-report.md",
+  //       List.of("index.md", "https://code.visualstudio.com/download",
+  //           "https://sdacs.ucsd.edu/~icc/index.php",
+  //           "https://sdacs.ucsd.edu/cgi-bin/alloc-query",
+  //           "https://docs.microsoft.com/en-us/windows-server/" +
+  //               "administration/openssh/openssh_install_firstuse"));
+  // }
 
-  @Test
-  public void testParensInsideLink() {
-    assertResult("test-parens-inside-link.md", List.of());
-  }
+  // @Test
+  // public void testParenInsideBracket() {
+  //   assertResult("test-paren-inside-bracket.md",
+  //       List.of("https://example.com"));
+  // }
 
-  @Test
-  public void testSpaceInURL() {
-    assertResult("test-space-in-url.md",
-        List.of());
-  }
+  // @Test
+  // public void testParensInsideLink() {
+  //   assertResult("test-parens-inside-link.md", List.of());
+  // }
 
-  @Test
-  public void testUnclosedBracket() {
-    assertResult("test-unclosed-bracket.md",
-        List.of("https://example.com", "https://example.com/2"));
-  }
+  // @Test
+  // public void testSpaceInURL() {
+  //   assertResult("test-space-in-url.md",
+  //       List.of());
+  // }
 
-  @Test
-  public void testUnclosedOpenParenThenLink() {
-    assertResult("test-unclosed-open-paren-then-link.md",
-        List.of("link2", "link3"));
-  }
+  // @Test
+  // public void testUnclosedBracket() {
+  //   assertResult("test-unclosed-bracket.md",
+  //       List.of("https://example.com", "https://example.com/2"));
+  // }
 
-  @Test
-  public void testUnmatchedParen() {
-    assertResult("test-unclosed-paren.md",
-        List.of("https://example.com", "https://example.com/2"));
-  }
+  // @Test
+  // public void testUnclosedOpenParenThenLink() {
+  //   assertResult("test-unclosed-open-paren-then-link.md",
+  //       List.of("link2", "link3"));
+  // }
 
-  @Test
-  public void testUnclosedCloseParen() {
-    assertResult("test-unmatched-close-paren.md",
-        List.of("link3", "link6"));
-  }
+  // @Test
+  // public void testUnmatchedParen() {
+  //   assertResult("test-unclosed-paren.md",
+  //       List.of("https://example.com", "https://example.com/2"));
+  // }
 
-  @Test
-  public void testLineSkip() {
-    assertResult("test-line-skip.md",
-        List.of("https://something.com", "some-page.html"));
-  }
+  // @Test
+  // public void testUnclosedCloseParen() {
+  //   assertResult("test-unmatched-close-paren.md",
+  //       List.of("link3", "link6"));
+  // }
+
+  // @Test
+  // public void testLineSkip() {
+  //   assertResult("test-line-skip.md",
+  //       List.of("https://something.com", "some-page.html"));
+  // }
 }
