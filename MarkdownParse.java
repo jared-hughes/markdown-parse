@@ -68,8 +68,23 @@ public class MarkdownParse {
 
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
+        boolean skippingCodeBlock = false;
         for (String line : markdown.split("\n")) {
-            toReturn.addAll(getLinksFromLine(line));
+            if (skippingCodeBlock) {
+                if (line.equals("```")) {
+                    // Exit fenced code block
+                    skippingCodeBlock = false;
+                    continue;
+                }
+            } else {
+                if (line.startsWith("```")) {
+                    // Enter fenced code block
+                    skippingCodeBlock = true;
+                    continue;
+                } else {
+                    toReturn.addAll(getLinksFromLine(line));
+                }
+            }
         }
         return toReturn;
     }
