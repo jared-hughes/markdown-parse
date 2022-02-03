@@ -96,4 +96,10 @@ public class MarkdownParseTest {
     assertResult("test-unmatched-close-paren.md",
         List.of("link3", "link6"));
   }
+
+  @Test
+  public void testLineSkip() {
+    assertResult("test-line-skip.md",
+        List.of("https://something.com", "some-page.html"));
+  }
 }
