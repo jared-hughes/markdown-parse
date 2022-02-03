@@ -102,4 +102,10 @@ public class MarkdownParseTest {
     assertResult("test-line-skip.md",
         List.of("https://something.com", "some-page.html"));
   }
+
+  @Test
+  public void testFencedCodeBlock() {
+    assertResult("test-fenced-code-block.md",
+        List.of("yes-link"));
+  }
 }
