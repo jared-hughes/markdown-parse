@@ -108,4 +108,22 @@ public class MarkdownParseTest {
     assertResult("test-fenced-code-block.md",
         List.of("yes-link"));
   }
+
+  @Test
+  public void testSnippet1() {
+    assertResult("test-snippet-1.md",
+        List.of("`google.com", "google.com", "ucsd.edu"));
+  }
+
+  @Test
+  public void testSnippet2() {
+    assertResult("test-snippet-2.md",
+        List.of("a.com", "a.com(())", "example.com"));
+  }
+
+  @Test
+  public void testSnippet3() {
+    assertResult("test-snippet-3.md",
+        List.of("https://ucsd-cse15l-w22.github.io/", "example.com"));
+  }
 }
