@@ -64,7 +64,7 @@ public class MarkdownParseTest {
 
   @Test
   public void testParensInsideLink() {
-    assertResult("test-parens-inside-link.md", List.of());
+    assertResult("test-parens-inside-link.md", List.of("link(paren)ee"));
   }
 
   @Test
@@ -124,6 +124,6 @@ public class MarkdownParseTest {
   @Test
   public void testSnippet3() {
     assertResult("test-snippet-3.md",
-        List.of("https://ucsd-cse15l-w22.github.io/", "example.com"));
+        List.of("https://ucsd-cse15l-w22.github.io/"));
   }
 }
